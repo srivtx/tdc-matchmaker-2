@@ -1,26 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 100" width="480" height="100">
-  <defs>
-    <style>
-      .ink { fill: #1A1612; }
-      .ink-soft { fill: #6B6356; }
-      .ember-bg { fill: #C84A2E; }
-      .white { fill: #F5F1E6; }
-      .serif { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-weight: 400; }
-      .mono  { font-family: 'SF Mono', 'JetBrains Mono', Menlo, monospace; font-weight: 500; }
-    </style>
-  </defs>
-
-  <rect width="480" height="100" fill="#FAF8F3"/>
-
-  <!-- T-tile mark — matches the in-app brand mark in the nav and login -->
-  <g transform="translate(40, 28)">
-    <rect x="0" y="0" width="44" height="44" rx="8" class="ember-bg"/>
-    <text x="22" y="34" font-size="32" class="white serif" text-anchor="middle">T</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
+  <!-- Mark: T as a single path, no font dependency -->
+  <g transform="translate(20, 16)">
+    <path
+      d="M 0,0 L 48,0 L 48,8 L 29,8 L 29,48 L 19,48 L 19,8 L 0,8 Z"
+      fill="#C84A2E"
+    />
   </g>
 
-  <!-- Wordmark stacked to the right of the tile -->
-  <g transform="translate(102, 0)">
-    <text x="0" y="42" font-size="10" class="ink-soft mono" letter-spacing="3.5">THE DATE CREW</text>
-    <text x="0" y="68" font-size="30" class="ink serif" letter-spacing="-0.5">Matchmaker</text>
+  <!-- Wordmark: TDC, plain monospace — fallback safe -->
+  <g transform="translate(88, 0)" font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-weight="600">
+    <text x="0" y="38" font-size="28" fill="#1A1612" letter-spacing="-1">TDC</text>
+    <text x="2" y="60" font-size="9" fill="#6B6356" letter-spacing="2.5">MATCHMAKER</text>
   </g>
 </svg>
