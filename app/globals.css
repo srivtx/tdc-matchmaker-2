@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═════════════════════════════════════════════════════════════════
+   TDC MATCHMAKER V2 — DESIGN TOKENS
+   Triage-first, private-banking aesthetic, warm-neutral palette.
+   ═════════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg:               #faf8f3;
+  --bg-elevated:      #ffffff;
+  --bg-sunken:        #f1efe8;
+  --bg-inset:         #ebe8de;
+
+  --ink:              #191712;
+  --ink-soft:         #45413a;
+  --ink-muted:        #6b6557;
+  --ink-faint:        #9a9382;
+
+  --border:           rgba(20, 18, 12, 0.10);
+  --border-strong:    rgba(20, 18, 12, 0.18);
+  --border-ember:     rgba(200, 74, 46, 0.30);
+
+  --ember:            #c84a2e;
+  --ember-soft:       rgba(200, 74, 46, 0.08);
+  --ember-strong:     #a33825;
+
+  --moss:             #5a7a4f;
+  --moss-soft:        rgba(90, 122, 79, 0.12);
+  --honey:            #c08a2c;
+  --honey-soft:       rgba(192, 138, 44, 0.12);
+  --slate:            #5a6878;
+  --slate-soft:       rgba(90, 104, 120, 0.12);
+
+  --shadow-sm:        0 1px 2px rgba(20, 18, 12, 0.04);
+  --shadow-md:        0 2px 8px rgba(20, 18, 12, 0.06), 0 1px 2px rgba(20, 18, 12, 0.04);
+  --shadow-lg:        0 8px 24px rgba(20, 18, 12, 0.10), 0 2px 4px rgba(20, 18, 12, 0.04);
+  --shadow-xl:        0 20px 50px rgba(20, 18, 12, 0.18);
+
+  --radius:           0.5rem;
+}
+
+html[data-theme="dark"] {
+  --bg:               #14110a;          /* warm off-black, not pure black */
+  --bg-elevated:      #1d1a12;          /* slightly warmer for cards */
+  --bg-sunken:        #0e0c08;          /* for sunken cells */
+  --bg-inset:         #100e09;          /* for insets */
+
+  --ink:              #f5f1e6;          /* warm cream, high contrast */
+  --ink-soft:         #d4cebd;          /* readable secondary */
+  --ink-muted:        #948e7d;          /* readable tertiary (was too dark) */
+  --ink-faint:        #615c51;          /* subtle dividers (was too dark) */
+
+  --border:           rgba(245, 241, 230, 0.10);   /* visible at rest */
+  --border-strong:    rgba(245, 241, 230, 0.18);   /* visible on hover */
+  --border-ember:     rgba(227, 102, 64, 0.50);
+
+  --ember:            #e8744d;          /* slightly brighter for dark */
+  --ember-soft:       rgba(232, 116, 77, 0.15);
+  --ember-strong:     #f49875;
+
+  --honey:            #d4a04a;
+  --honey-soft:       rgba(212, 160, 74, 0.14);
+  --moss:             #7fb069;
+  --moss-soft:        rgba(127, 176, 105, 0.14);
+  --slate:            #8a8678;
+
+  --shadow-sm:        0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md:        0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-lg:        0 8px 24px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-xl:        0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+/* ─── RESET ─── */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
+  transition: background 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+/* Subtle paper texture — adds depth without visual noise */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(20, 18, 12, 0.025) 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+html[data-theme="dark"] body::before {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 248, 230, 0.02) 1px, transparent 0);
+  mix-blend-mode: screen;
+}
+::selection { background: var(--ember); color: white; }
+
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+.font-mono  { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.font-serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+
+/* Hide scrollbars globally by default — only show on actual page scroll */
+::-webkit-scrollbar { width: 0; height: 0; }
+::-webkit-scrollbar-thumb { background: transparent; }
+::-webkit-scrollbar-track { background: transparent; }
+* { scrollbar-width: none; }
+*::-webkit-scrollbar { width: 0; height: 0; }
+
+/* No scrollbar treatment anywhere — the v2 side rails scroll without a visible bar */
+.v2-side-scroll { scrollbar-width: none; }
+.v2-side-scroll::-webkit-scrollbar { width: 0; height: 0; }
+.v2-side-scroll::-webkit-scrollbar-thumb { background: transparent; }
+.v2-side-scroll::-webkit-scrollbar-track { background: transparent; }
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
