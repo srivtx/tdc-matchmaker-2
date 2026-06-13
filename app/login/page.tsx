@@ -62,20 +62,19 @@ export default function LoginPage() {
           }}
         />
 
-        <div className="relative z-10 flex items-center gap-3">
+        {/* Wordmark only — no tile. A magazine masthead doesn't put a
+            square icon next to its wordmark; the wordmark IS the mark. */}
+        <div className="relative z-10">
           <div
-            className="w-9 h-9 rounded-md flex items-center justify-center"
-            style={{ background: "var(--ember)" }}
+            className="font-mono text-[10px] uppercase tracking-[0.22em] text-[color:var(--ember)] mb-2"
           >
-            <span className="font-serif text-white text-xl leading-none">T</span>
+            The Date Crew
           </div>
-          <div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/50">
-              The Date Crew
-            </div>
-            <div className="font-serif text-white text-base leading-none mt-1">
-              Matchmaker
-            </div>
+          <div
+            className="font-serif text-white leading-none"
+            style={{ fontSize: 36, letterSpacing: "-0.01em" }}
+          >
+            Matchmaker
           </div>
         </div>
 
@@ -133,21 +132,18 @@ export default function LoginPage() {
         <div
           className="flex items-center justify-between lg:justify-end px-5 sm:px-8 lg:px-16 py-5 sm:py-6 lg:py-16"
         >
-          {/* Brand mark — only on mobile. On lg+ the left aside has the brand. */}
-          <div className="flex items-center gap-2.5 lg:hidden">
+          {/* Wordmark — only on mobile. On lg+ the left aside has it. */}
+          <div className="lg:hidden">
             <div
-              className="w-8 h-8 rounded-md flex items-center justify-center"
-              style={{ background: "var(--ember)" }}
+              className="font-mono text-[9px] uppercase tracking-[0.18em] text-[color:var(--ember)]"
             >
-              <span className="font-serif text-white text-base leading-none">T</span>
+              The Date Crew
             </div>
-            <div className="hidden sm:block">
-              <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-[color:var(--ink-faint)]">
-                The Date Crew
-              </div>
-              <div className="font-serif text-[15px] text-[color:var(--ink)] leading-none mt-0.5">
-                Matchmaker
-              </div>
+            <div
+              className="font-serif text-[color:var(--ink)] leading-none mt-0.5"
+              style={{ fontSize: 20, letterSpacing: "-0.01em" }}
+            >
+              Matchmaker
             </div>
           </div>
 
