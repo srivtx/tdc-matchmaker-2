@@ -120,9 +120,12 @@ export function MatchComposer({ customer, match, cachedEmail, onEmailGenerated, 
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.97, opacity: 0, y: 8 }}
         transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
-        // Mobile: 1 col (panels stack). md+: 2 cols (reference + editor).
-        className="w-full max-w-[1080px] rounded-xl overflow-hidden grid relative grid-cols-1 md:grid-cols-[minmax(360px,400px)_1fr]"
+        // Mobile: 1 col, panels stack, max-h is viewport. md+: 2 cols side-by-side.
+        // overflow-y-auto lets the whole modal scroll on mobile if content
+        // is taller than the viewport.
+        className="w-full max-w-[1080px] rounded-xl overflow-y-auto md:overflow-hidden grid relative grid-cols-1 md:grid-cols-[minmax(360px,400px)_1fr]"
         style={{
+          maxHeight: "calc(100vh - 24px)",
           height: "min(640px, calc(100vh - 80px))",
           background: "var(--bg-elevated)",
           border: "1px solid var(--border-strong)",
@@ -178,10 +181,12 @@ export function MatchComposer({ customer, match, cachedEmail, onEmailGenerated, 
           </div>
 
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/40 mb-2.5">
+            {/* Compatibility stats — hidden on mobile (the editor panel
+                already has the score breakdown). md+: visible. */}
+            <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/40 mb-2.5 hidden md:block">
               Compatibility at a glance
             </div>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-4 gap-2 hidden md:grid">
               <Stat label="Composite" value={match.totalScore} />
               <Stat label="Values" value={match.breakdown.valuesAlignment} />
               <Stat label="Lifestyle" value={match.breakdown.lifestyleCompatibility} />
@@ -189,16 +194,18 @@ export function MatchComposer({ customer, match, cachedEmail, onEmailGenerated, 
             </div>
           </div>
 
-          <div className="flex-1 min-h-0 flex flex-col">
+          {/* Notes context — collapses to a single short quote on mobile,
+              keeps the full context on md+. */}
+          <div className="md:flex-1 md:min-h-0 flex flex-col">
             <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/40 mb-2.5">
               {customer.notes?.[0] ? "Latest intake note" : "Context"}
             </div>
             <div
-              className="v2-side-scroll p-3 rounded text-[11px] leading-[1.55] text-white/70 italic flex-1 min-h-0"
+              className="v2-side-scroll p-3 rounded text-[11px] leading-[1.55] text-white/70 italic md:flex-1 md:min-h-0"
               style={{ background: "rgba(255,255,255,0.04)", borderLeft: "2px solid var(--ember)" }}
             >
               {customer.notes?.[0] ? (
-                `"${customer.notes[0].text}"`
+                <span className="line-clamp-3 md:line-clamp-none">"{customer.notes[0].text}"</span>
               ) : (
                 <div className="not-italic text-white/45 space-y-2">
                   <div>
