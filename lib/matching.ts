@@ -134,27 +134,26 @@ export function calculateTotalScore(breakdown: MatchBreakdown): number {
 }
 
 function generateExplanation(score: number, breakdown: MatchBreakdown, customer: CustomerProfile, pool: PoolProfile): string {
-  const customerAge = calculateAge(customer.dateOfBirth);
   const poolAge = calculateAge(pool.dateOfBirth);
+  // Pick the most concrete, name-worthy highlights — at most 2.
+  // Prefer specifics (city, language, shared dimension) over generic phrases.
   const highlights: string[] = [];
-  if (breakdown.valuesAlignment >= 80) highlights.push("strong values alignment");
-  if (breakdown.educationCompatibility >= 80) highlights.push("compatible educational backgrounds");
-  if (breakdown.lifestyleCompatibility >= 80) highlights.push("compatible lifestyle preferences");
-  if (breakdown.religionCasteBonus >= 80) highlights.push("shared religious and community background");
-  if (breakdown.ageCompatibility >= 90) highlights.push("ideal age gap");
-  if (breakdown.incomeCompatibility >= 80) highlights.push("compatible income brackets");
-  if (customer.city === pool.city) highlights.push("same city");
+  if (customer.city === pool.city) highlights.push("both in " + customer.city);
+  if (breakdown.valuesAlignment >= 80) highlights.push("shared values");
+  if (breakdown.educationCompatibility >= 80) highlights.push("compatible education");
+  if (breakdown.lifestyleCompatibility >= 80) highlights.push("compatible lifestyle");
+  if (breakdown.religionCasteBonus >= 80) highlights.push("shared community");
   if (breakdown.languageOverlap >= 80) highlights.push("shared languages");
+  if (breakdown.ageCompatibility >= 90) highlights.push("ideal age gap");
 
-  const tier = score >= 85 ? "Excellent" : score >= 70 ? "High" : score >= 50 ? "Good" : "Okay";
-
-  if (highlights.length >= 3) {
-    return `${tier} match — ${highlights.slice(0, 3).join(", ")}. ${pool.firstName} (${poolAge}, ${pool.city}) shares key compatibility factors with ${customer.firstName}.`;
+  // One short sentence, ~12-18 words. The verdict is a single line, not a paragraph.
+  // Lead with the most specific detail (city or shared dimension).
+  if (highlights.length === 0) {
+    return `${pool.firstName} and ${customer.firstName} have some differences worth discussing.`;
   }
-  if (highlights.length > 0) {
-    return `${tier} potential — ${highlights.join(" and ")}. Worth exploring further.`;
-  }
-  return `${tier} compatibility. Some differences in preferences may require discussion.`;
+  // Take the top 2 highlights and weave them into a single sentence.
+  const top = highlights.slice(0, 2);
+  return `${pool.firstName} (${poolAge}) and ${customer.firstName} — ${top.join(", ")}.`;
 }
 
 export function scoreMatch(customer: CustomerProfile, poolProfile: PoolProfile): MatchScore {

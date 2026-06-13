@@ -213,7 +213,20 @@ export function CompareCanvas({ customer, match }: Props) {
           >
             10-dim weighted
           </span>
-          <p className="text-[12px] leading-[1.5] text-[color:var(--ink-soft)] flex-1 min-w-0" style={{ margin: 0 }}>
+          {/* The verdict — a single short editorial line.
+              If the AI enhanced it, show in serif italic; otherwise the
+              deterministic fallback reads as a smaller muted italic. */}
+          <p
+            className="flex-1 min-w-0 m-0 truncate"
+            style={{
+              fontSize: 13,
+              lineHeight: 1.45,
+              color: aiEnhanced ? "var(--ink)" : "var(--ink-soft)",
+              fontStyle: "italic",
+              fontFamily: "'Instrument Serif', Georgia, 'Times New Roman', serif",
+            }}
+            title={explanation}
+          >
             {explanation}
           </p>
         </div>
