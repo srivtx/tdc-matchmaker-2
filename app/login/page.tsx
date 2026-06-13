@@ -128,15 +128,13 @@ export default function LoginPage() {
         className="flex flex-col min-h-screen"
         style={{ background: "var(--bg)" }}
       >
-        {/* Top bar — always present, but minimal. On lg+ a tiny theme toggle
-            floats in the corner. On mobile a single small ember mark sits
-            top-left, just enough brand presence. */}
+        {/* Top bar — minimal. Brand mark only on mobile (lg:hidden), since
+            the left editorial aside already has it on lg+. */}
         <div
           className="flex items-center justify-between px-5 sm:px-8 lg:px-16 py-5 sm:py-6"
         >
-          {/* Brand mark — single ember tile. No wordmark on mobile (junk),
-              full wordmark on sm+. */}
-          <div className="flex items-center gap-2.5">
+          {/* Brand mark — only on mobile. On lg+ the left aside has the brand. */}
+          <div className="flex items-center gap-2.5 lg:hidden">
             <div
               className="w-8 h-8 rounded-md flex items-center justify-center"
               style={{ background: "var(--ember)" }}
