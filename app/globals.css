@@ -82,8 +82,8 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-feature-settings: "ss01", "cv11";
@@ -113,8 +113,16 @@ html[data-theme="dark"] body::before {
 button, input, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
 
-.font-mono  { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
-.font-serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+/* Mono + serif utilities.
+   - No default letter-spacing: each label sets its own tracking inline,
+     so the visible gap matches the design intent (e.g. tracking-[0.2em]
+     actually renders as 0.2em, not 0.19em).
+   - Tabular-nums on mono so numeric columns align across rows.
+   - Line-height inherits from body (1.6). Big serif display numbers
+     override inline with leading-none; small mono labels keep the body
+     leading so they don't feel crushed. */
+.font-mono  { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+.font-serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
 
 /* Hide scrollbars globally by default — only show on actual page scroll */
 ::-webkit-scrollbar { width: 0; height: 0; }
