@@ -129,23 +129,30 @@ export default function LoginPage() {
         className="flex flex-col min-h-screen"
         style={{ background: "var(--bg)" }}
       >
-        {/* Top bar — minimal. Brand mark only on mobile (lg:hidden), since
-            the left editorial aside already has it on lg+. */}
+        {/* Top bar — mobile has the same T-tile masthead as desktop
+            (left aside has it on lg+). */}
         <div
           className="flex items-center justify-between lg:justify-end px-5 sm:px-8 lg:px-16 py-5 sm:py-6 lg:py-16"
         >
-          {/* Wordmark — only on mobile. On lg+ the left aside has it. */}
-          <div className="lg:hidden">
+          {/* Masthead — visible on all sizes; on lg+ it sits behind the
+              left aside's masthead, but lg:justify-end keeps it right. */}
+          <div className="flex items-center gap-2.5 lg:hidden">
             <div
-              className="font-mono text-[9px] uppercase tracking-[0.18em] text-[color:var(--ember)]"
+              className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0"
+              style={{ background: "var(--ember)" }}
             >
-              The Date Crew
+              <span className="font-serif text-white text-lg leading-none">T</span>
             </div>
-            <div
-              className="font-serif text-[color:var(--ink)] leading-none mt-0.5"
-              style={{ fontSize: 20, letterSpacing: "-0.01em" }}
-            >
-              Matchmaker
+            <div>
+              <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-[color:var(--ink-faint)] leading-none">
+                The Date Crew
+              </div>
+              <div
+                className="font-serif text-[color:var(--ink)] leading-none mt-1"
+                style={{ fontSize: 16, letterSpacing: "-0.01em" }}
+              >
+                Matchmaker
+              </div>
             </div>
           </div>
 
