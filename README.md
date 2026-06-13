@@ -1,13 +1,10 @@
 <p align="center">
-  <img src="public/tdc-logo.svg" alt="TDC Matchmaker" width="420" />
+  <img src="public/tdc-logo.svg" alt="TDC Matchmaker" width="480" />
 </p>
 
-<h3 align="center"><i>The substrate matchmaking pipelines grow on.</i></h3>
+<h3 align="center"><em>The substrate matchmaking pipelines grow on.</em></h3>
 
-<p align="center">
-  An editorial-grade workspace for The Date Crew.<br/>
-  Built for the decision, not the profile.
-</p>
+<p align="center">An editorial-grade workspace for The Date Crew.<br/><em>Built for the decision, not the profile.</em></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Next.js-14-black?style=flat&logo=next.js" />
@@ -35,13 +32,13 @@
 
 ```bash
 npm install
-cp .env.example .env.local   # then add your API keys
+cp .env.example .env.local   # paste your API keys
 npm run dev
 ```
 
 **Demo login:** `priya.sharma` / `tdc2024`
 
-Open <http://localhost:3000> — works on mobile and desktop, light & dark mode.
+Open [http://localhost:3000](http://localhost:3000) — responsive, light + dark mode, no backend required.
 
 ---
 
@@ -49,11 +46,11 @@ Open <http://localhost:3000> — works on mobile and desktop, light & dark mode.
 
 The dashboard is a **magazine front page**, not a CRM. The matchmaker opens it and sees:
 
-1. **The date** (top-left) and a time-aware greeting (*Good morning, Priya.*)
-2. **Three priority stats** — intros to send, follow-ups due, in-pipeline
-3. **§ 01 Lead stories** — three featured cards ranked by *priority score* (stage urgency + days in stage + engagement), each with photo, name, age/city/job, stage blurb, and a one-sentence body. Top-right action: open case file.
+1. **The date** and a time-aware greeting (*Good morning, Priya.*)
+2. **Three priority stats** — intros to send, follow-ups due, pipeline count
+3. **§ 01 — Lead stories** — three featured cards ranked by priority score (stage urgency × days in stage × engagement). Each card: photo, name, age/city/job, stage blurb, one-sentence body, and a CTA
 4. **Yesterday digest** — new matches suggested, families replied, intros awaiting reply
-5. **§ 02 The full pipeline** — every customer, filterable (Active / Stalled / All) and sortable (Urgency / Stage / Name)
+5. **§ 02 — The full pipeline** — every customer, filterable (Active / Stalled / All) and sortable (Urgency / Stage / Name)
 
 The matchmaker glances, decides what to do in 5 seconds, and acts.
 
@@ -63,11 +60,11 @@ The matchmaker glances, decides what to do in 5 seconds, and acts.
 
 Click any customer → opens the **case file** in three columns:
 
-- **Left rail** — the customer: photo, name, age/city/job, stage, full biodata, journey stepper
-- **Center** — the compare canvas: the A/B score for the selected match, the four *key factors* that actually matter for this specific match (with concrete "Values — both non-vegetarian, both family-first" reasoning), the *other six dimensions* as a glance strip, matchmaker notes
-- **Right rail** — the full match list with tier filters (All / Excellent / High / Good), keyboard navigation (`↑↓` to move, `⌘↵` to send)
+- **Left rail** — the customer: photo, name, age/city/job, stage badge, full biodata (income, height, education, community, diet, languages, relocation), journey stepper
+- **Center** — the compare canvas: A/B score for the selected match, four *key factors* that matter for this specific match with concrete reasoning (*"Both non-vegetarian, both family-first, both Chandigarh-based"*), six other dimensions as a glance strip, matchmaker notes
+- **Right rail** — full match list with tier filters (All / Excellent / High / Good), keyboard navigation (`↑↓` to move, `⌘↵` to send)
 
-Send match opens a **side-by-side composer**: dark reference panel on the left showing both people, light editor on the right with a structured email body. "Draft with AI" injects a one-sentence reason into the body (the rest of the email — salutation, intro sentence, reply instructions, sign-off — is hardcoded JSX, so the AI is doing one job well instead of rewriting everything).
+Send match opens a **side-by-side composer**: dark reference panel on the left showing both people, light editor on the right with a structured email body. "Draft with AI" injects a one-sentence reason into the body — the rest of the email (salutation, intro, reply instructions, sign-off) is hardcoded JSX, so the AI does one job well instead of rewriting everything.
 
 ---
 
@@ -84,28 +81,27 @@ Add one or both to `.env.local`:
 
 ```env
 NEXT_PUBLIC_GROQ_API_KEY=***
-NEXT_PUBLIC_OPENROUTER_API_KEY=***
-OPENROUTER_API_KEY=***      # server-side only, used by /api/match
+N...=***      # server-only, used by /api/match
 ```
 
 **Three AI features:**
 
-- **§ Enhance with AI** in the case file — generates per-match one-sentence explanations ("Aarav and Ananya share vegetarian values, both family-first, both Chandigarh-based, no relocation needed") via the server-side API route
-- **Draft with AI** in the composer — generates a one-sentence reason and injects it into the email skeleton
-- **Regenerate** — always hits the API for a fresh variant, ignoring any cached explanation
+- **Enhance with AI** — generates per-match one-sentence explanations via server-side API route
+- **Draft with AI** — generates a one-sentence reason and injects it into the email skeleton
+- **Regenerate** — always calls the API for a fresh variant, ignoring any cached explanation
 
-If no key is set, the UI degrades gracefully: explanations show the static fallback, the email composer shows the starter paragraph.
+No keys? UI degrades gracefully: explanations show the static fallback, the composer shows the starter paragraph.
 
 ---
 
 ## Design System
 
-- **Editorial brief** — Instrument Serif for headlines (like *The New Yorker* or a private banking letterhead), Inter for body, JetBrains Mono for numerics and metadata
+- **Editorial voice** — Instrument Serif for headlines (like *The New Yorker*), Inter for body, JetBrains Mono for numerics and metadata
 - **Warm-neutral palette** — warm beige `#FAF8F3` (light) / warm off-black `#14110A` (dark), single ember terracotta accent `#C84A2E`
-- **Subtle paper texture** — a fixed dot grid overlay on the body to evoke a printed page
-- **Custom glyphs** — all icons are 1.25px stroke, sharp corners, no fills — drawn in-house to match the typography's voice (no Material Design, no filled icons)
+- **Paper texture** — fixed dot grid overlay on the body to evoke a printed page
+- **Custom glyphs** — all icons are 1.25px stroke, sharp corners, no fills — drawn in-house to match the typography (no Material Design, no filled icons)
 - **Section numbers** — `§ 01`, `§ 02` like a magazine, with em-dash separators
-- **Numbered hairlines** — drop caps, drop-cap initials, monospace metadata in eyebrow labels
+- **Drop caps** — first letter of featured card bodies rendered as a large serif initial
 
 The whole thing feels like *opening a magazine*, not opening a SaaS dashboard.
 
@@ -113,12 +109,12 @@ The whole thing feels like *opening a magazine*, not opening a SaaS dashboard.
 
 ## Mobile
 
-Designed mobile-first. Try opening it on a phone:
+Designed mobile-first. Open it on a phone:
 
-- The dashboard stacks: featured cards stack vertically, the search/filter row wraps, customer rows collapse from a 6-col table to a 2-row card (avatar+name+income+chevron on top, stage+city as a mono strip below)
-- The case file: left rail collapses to a compact summary card (photo + name + 3 key facts), the right rail's match list becomes a horizontal scroll strip you swipe through
-- The composer: dark reference panel stacks above the light editor on mobile
-- The login page: editorial hero hides entirely, just the form
+- Dashboard stacks: featured cards go vertical, search/filter wraps, customer rows collapse from 6-col table to 2-row card
+- Case file: left rail becomes a compact summary card, right rail becomes a horizontal scroll strip you swipe
+- Composer: dark reference panel stacks above the light editor
+- Login: editorial hero hides entirely, just the form
 
 ---
 
@@ -131,7 +127,7 @@ Designed mobile-first. Try opening it on a phone:
 | Styling | [Tailwind CSS 3](https://tailwindcss.com) with CSS custom-property design tokens |
 | Type | [Instrument Serif](https://fonts.google.com/specimen/Instrument+Serif) · [Inter](https://rsms.me/inter) · [JetBrains Mono](https://www.jetbrains.com/lp/mono) |
 | Motion | [Framer Motion](https://www.framer.com/motion) |
-| Icons | Custom 1.25px-stroke SVG glyphs (see `components/Glyph.tsx`) |
+| Icons | Custom 1.25px-stroke SVG glyphs (`components/Glyph.tsx`) |
 | AI | [Groq](https://groq.com) · [OpenRouter](https://openrouter.ai) |
 | Hosting | [Vercel](https://vercel.com) |
 
