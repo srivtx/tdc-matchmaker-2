@@ -62,23 +62,21 @@ export default function LoginPage() {
           }}
         />
 
-        {/* Masthead — thin rule + wordmark, like a real magazine.
-            No tile. The wordmark IS the mark, the rule is the anchor. */}
-        <div className="relative z-10">
+        {/* Masthead — T-tile logo + stacked wordmark. */}
+        <div className="relative z-10 flex items-center gap-2.5">
           <div
-            className="h-px w-12 mb-3"
+            className="w-9 h-9 rounded-md flex items-center justify-center flex-shrink-0"
             style={{ background: "var(--ember)" }}
-          />
-          <div
-            className="font-mono text-[9px] uppercase tracking-[0.22em] text-[color:var(--ember)] leading-none"
           >
-            The Date Crew
+            <span className="font-serif text-white text-xl leading-none">T</span>
           </div>
-          <div
-            className="font-serif text-white leading-none mt-2"
-            style={{ fontSize: 28, letterSpacing: "-0.01em" }}
-          >
-            Matchmaker
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/50 leading-none">
+              The Date Crew
+            </div>
+            <div className="font-serif text-white text-base leading-none mt-1">
+              Matchmaker
+            </div>
           </div>
         </div>
 
