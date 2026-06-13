@@ -1,16 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
-  <!-- TDC wordmark — editorial masthead style, no tile, no background -->
-  <text x="0" y="72"
-        font-size="78"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- Editorial seal / stamp style -->
+  
+  <!-- Outer circle border -->
+  <circle cx="150" cy="150" r="140" fill="none" stroke="#C84A2E" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Inner ember tile with serif T -->
+  <rect x="100" y="100" width="100" height="100" rx="16" fill="#C84A2E"/>
+  <text x="150" y="168"
+        font-size="72"
         font-weight="400"
         font-style="italic"
-        letter-spacing="-2"
-        fill="#C84A2E"
-        font-family="Georgia, 'Times New Roman', 'Playfair Display', serif">TDC</text>
-  <text x="4" y="95"
-        font-size="11"
-        font-weight="500"
-        letter-spacing="5.5"
-        fill="#6B6356"
-        font-family="'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace">MATCHMAKER</text>
+        text-anchor="middle"
+        fill="#F5F1E6"
+        font-family="Georgia, 'Times New Roman', 'Playfair Display', serif">T</text>
+  
+  <!-- Curved text: TDC MATCHMAKER around the circle -->
+  <defs>
+    <path id="textCircle" d="M 150,150 m -120,0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0" />
+  </defs>
+  <text font-size="14" font-weight="500" letter-spacing="6" fill="#6B6356"
+        font-family="'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace">
+    <textPath href="#textCircle" startOffset="50%" text-anchor="middle">
+      TDC · MATCHMAKER · EST · 2014
+    </textPath>
+  </text>
 </svg>
