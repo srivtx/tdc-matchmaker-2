@@ -62,19 +62,29 @@ export default function LoginPage() {
           }}
         />
 
-        {/* Wordmark only — no tile. A magazine masthead doesn't put a
-            square icon next to its wordmark; the wordmark IS the mark. */}
-        <div className="relative z-10">
+        {/* Masthead — small ember tile + stacked wordmark.
+            The tile is the visual anchor; the wordmark is the name.
+            Both at 28px so the masthead sits low in the corner
+            instead of dominating the panel. */}
+        <div className="relative z-10 flex items-center gap-2.5">
           <div
-            className="font-mono text-[10px] uppercase tracking-[0.22em] text-[color:var(--ember)] mb-2"
+            className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
+            style={{ background: "var(--ember)" }}
           >
-            The Date Crew
+            <span className="font-serif text-white text-[17px] leading-none italic">T</span>
           </div>
-          <div
-            className="font-serif text-white leading-none"
-            style={{ fontSize: 36, letterSpacing: "-0.01em" }}
-          >
-            Matchmaker
+          <div>
+            <div
+              className="font-mono text-[9px] uppercase tracking-[0.22em] text-[color:var(--ember)] leading-none"
+            >
+              The Date Crew
+            </div>
+            <div
+              className="font-serif text-white leading-none mt-1.5"
+              style={{ fontSize: 24, letterSpacing: "-0.01em" }}
+            >
+              Matchmaker
+            </div>
           </div>
         </div>
 
