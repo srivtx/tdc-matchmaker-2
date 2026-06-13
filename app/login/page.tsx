@@ -71,7 +71,7 @@ export default function LoginPage() {
             className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
             style={{ background: "var(--ember)" }}
           >
-            <span className="font-serif text-white text-[17px] leading-none italic">T</span>
+            <span className="font-serif text-white text-[17px] leading-none">T</span>
           </div>
           <div>
             <div
