@@ -78,7 +78,7 @@ export function CustomerRow({ customer, onClick }: Props) {
               display typeface (matches the rest of the app's name treatment). */}
           <div
             className="font-serif truncate"
-            style={{ fontSize: 17, lineHeight: 1.15, letterSpacing: "-0.01em" }}
+            style={{ fontSize: 15, lineHeight: 1.15, letterSpacing: "-0.01em" }}
           >
             {customer.firstName} {customer.lastName}
             <span className="font-mono text-[10px] text-[color:var(--ink-faint)] ml-1.5" style={{ fontWeight: 400 }}>{age}y</span>

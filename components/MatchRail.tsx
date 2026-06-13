@@ -191,7 +191,7 @@ export function MatchRail({ matches, selectedIdx, onSelect, loading }: Props) {
                           Personal names always use the display typeface. */}
                       <div
                         className="font-serif leading-[1.1] truncate"
-                        style={{ fontSize: 16, letterSpacing: "-0.01em" }}
+                        style={{ fontSize: 14, letterSpacing: "-0.01em" }}
                       >
                         {m.profile.firstName} {m.profile.lastName}
                       </div>
