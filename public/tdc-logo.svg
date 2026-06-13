@@ -1,15 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
-  <!-- Mark: T as a single path, no font dependency -->
-  <g transform="translate(20, 16)">
-    <path
-      d="M 0,0 L 48,0 L 48,8 L 29,8 L 29,48 L 19,48 L 19,8 L 0,8 Z"
-      fill="#C84A2E"
-    />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" width="360" height="200">
+  <defs>
+    <style>
+      .ink { fill: #1A1612; }
+      .ember { fill: #C84A2E; }
+      .serif { font-family: ui-serif, 'Playfair Display', 'Iowan Old Style', 'Apple Garamond', Georgia, 'Times New Roman', serif; font-weight: 400; }
+      .mono  { font-family: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace; font-weight: 500; }
+    </style>
+  </defs>
+
+  <rect width="360" height="200" fill="#FAF8F3"/>
+
+  <!-- The mark: a serif T with a long extended crossbar.
+       The crossbar is the design — it extends well past the stem on both
+       sides, like a meeting line or a horizon. Pure SVG, no font. -->
+  <g transform="translate(180, 30)" fill="#C84A2E">
+    <!-- Vertical stem (centered) -->
+    <rect x="-4" y="0" width="8" height="76"/>
+    <!-- Extended crossbar — goes well past the stem on both sides -->
+    <rect x="-32" y="0" width="64" height="9"/>
   </g>
 
-  <!-- Wordmark: TDC, plain monospace — fallback safe -->
-  <g transform="translate(88, 0)" font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-weight="600">
-    <text x="0" y="38" font-size="28" fill="#1A1612" letter-spacing="-1">TDC</text>
-    <text x="2" y="60" font-size="9" fill="#6B6356" letter-spacing="2.5">MATCHMAKER</text>
-  </g>
+  <!-- TDC wordmark below the mark, in a single weight serif.
+       Centered. Tight letter-spacing. Small enough to read as a label,
+       not a logo. -->
+  <text
+    x="180" y="146"
+    font-size="22"
+    class="ink serif"
+    text-anchor="middle"
+    letter-spacing="6"
+  >TDC</text>
+
+  <!-- Single hairline rule — like a footer mark in a magazine. -->
+  <line x1="148" y1="158" x2="212" y2="158" stroke="#1A1612" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- MATCHMAKER in mono, small caps, wide tracking. -->
+  <text
+    x="180" y="178"
+    font-size="8"
+    class="ink mono"
+    text-anchor="middle"
+    letter-spacing="4.5"
+  >MATCHMAKER</text>
 </svg>
