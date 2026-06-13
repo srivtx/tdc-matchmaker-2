@@ -74,9 +74,14 @@ export function CustomerRow({ customer, onClick }: Props) {
           size={32}
         />
         <div className="min-w-0 flex-1">
-          <div className="flex items-baseline gap-2 text-[13px] font-medium text-[color:var(--ink)] truncate">
+          {/* Name in editorial serif — personal names always use the
+              display typeface (matches the rest of the app's name treatment). */}
+          <div
+            className="font-serif truncate"
+            style={{ fontSize: 17, lineHeight: 1.15, letterSpacing: "-0.01em" }}
+          >
             {customer.firstName} {customer.lastName}
-            <span className="font-mono text-[10px] text-[color:var(--ink-faint)] font-normal">{age}y</span>
+            <span className="font-mono text-[10px] text-[color:var(--ink-faint)] ml-1.5" style={{ fontWeight: 400 }}>{age}y</span>
           </div>
           <div className="text-[10.5px] text-[color:var(--ink-muted)] truncate">
             {customer.designation}
