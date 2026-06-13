@@ -62,29 +62,23 @@ export default function LoginPage() {
           }}
         />
 
-        {/* Masthead — small ember tile + stacked wordmark.
-            The tile is the visual anchor; the wordmark is the name.
-            Both at 28px so the masthead sits low in the corner
-            instead of dominating the panel. */}
-        <div className="relative z-10 flex items-center gap-2.5">
+        {/* Masthead — thin rule + wordmark, like a real magazine.
+            No tile. The wordmark IS the mark, the rule is the anchor. */}
+        <div className="relative z-10">
           <div
-            className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
+            className="h-px w-12 mb-3"
             style={{ background: "var(--ember)" }}
+          />
+          <div
+            className="font-mono text-[9px] uppercase tracking-[0.22em] text-[color:var(--ember)] leading-none"
           >
-            <span className="font-serif text-white text-[17px] leading-none">T</span>
+            The Date Crew
           </div>
-          <div>
-            <div
-              className="font-mono text-[9px] uppercase tracking-[0.22em] text-[color:var(--ember)] leading-none"
-            >
-              The Date Crew
-            </div>
-            <div
-              className="font-serif text-white leading-none mt-1.5"
-              style={{ fontSize: 24, letterSpacing: "-0.01em" }}
-            >
-              Matchmaker
-            </div>
+          <div
+            className="font-serif text-white leading-none mt-2"
+            style={{ fontSize: 28, letterSpacing: "-0.01em" }}
+          >
+            Matchmaker
           </div>
         </div>
 
