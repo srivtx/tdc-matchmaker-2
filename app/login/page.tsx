@@ -131,7 +131,7 @@ export default function LoginPage() {
         {/* Top bar — minimal. Brand mark only on mobile (lg:hidden), since
             the left editorial aside already has it on lg+. */}
         <div
-          className="flex items-center justify-between lg:justify-end px-5 sm:px-8 lg:px-16 py-5 sm:py-6"
+          className="flex items-center justify-between lg:justify-end px-5 sm:px-8 lg:px-16 py-5 sm:py-6 lg:py-16"
         >
           {/* Brand mark — only on mobile. On lg+ the left aside has the brand. */}
           <div className="flex items-center gap-2.5 lg:hidden">
