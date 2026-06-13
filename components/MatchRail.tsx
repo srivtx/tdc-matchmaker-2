@@ -186,18 +186,19 @@ export function MatchRail({ matches, selectedIdx, onSelect, loading }: Props) {
                       size={30}
                     />
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-baseline gap-1.5 text-[12px] font-medium text-[color:var(--ink)]">
-                        <span className="truncate">{m.profile.firstName} {m.profile.lastName}</span>
-                        <span className="font-mono text-[9px] text-[color:var(--ink-faint)] font-normal">
-                          #{realIdx + 1}
-                        </span>
+                      {/* Name in editorial serif (matches the rest of the app's
+                          name treatment — CustomerRail, CompareCanvas, etc.).
+                          Personal names always use the display typeface. */}
+                      <div
+                        className="font-serif leading-[1.1] truncate"
+                        style={{ fontSize: 16, letterSpacing: "-0.01em" }}
+                      >
+                        {m.profile.firstName} {m.profile.lastName}
                       </div>
-                      {/* md+ only — full meta line */}
-                      <div className="hidden md:block font-mono text-[9px] text-[color:var(--ink-muted)] mt-0.5 truncate">
-                        {age}y · {m.profile.city} · {m.profile.designation}
+                      <div className="font-mono text-[9px] text-[color:var(--ink-faint)] mt-0.5 font-normal">
+                        #{realIdx + 1}
                       </div>
-                      {/* Mobile only — compact meta + score inline */}
-                      <div className="md:hidden font-mono text-[9px] text-[color:var(--ink-muted)] mt-0.5 truncate">
+                      <div className="font-mono text-[9px] text-[color:var(--ink-muted)] mt-0.5 truncate">
                         {age}y · {m.profile.city}
                       </div>
                       <div className="hidden md:flex flex gap-1 mt-1.5">
